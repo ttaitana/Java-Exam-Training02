@@ -41,15 +41,16 @@ public class BookStore {
         }
     }
 
-    public int priceCalculate() {
+
+    public double priceCalculate() {
         if(this.cart.length == 0){
             return 0;
         }
+        DiscountPrice dp = new DiscountPrice();
         this.countBookInCart();
-        int totalPrice = 0;
-        for (int i : this.bookInCart) {
-            totalPrice += i * 100;
-        }
+        dp.setCart(this.bookInCart);
+
+        double totalPrice = dp.discountPriceCal();
         return totalPrice;
     }
 }
