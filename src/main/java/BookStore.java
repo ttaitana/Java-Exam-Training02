@@ -37,15 +37,19 @@ public class BookStore {
             if (Integer.parseInt(book) > 5 || Integer.parseInt(book) < 1) {
                 continue;
             }
-            this.increaseBookInCart(Integer.parseInt(book)-1, 1);
+            this.increaseBookInCart(Integer.parseInt(book) - 1, 1);
         }
     }
 
     public int priceCalculate() {
-        this.countBookInCart();
-        for (int i : this.bookInCart) {
-            System.out.println(i);
+        if(this.cart.length == 0){
+            return 0;
         }
-        return 0;
+        this.countBookInCart();
+        int totalPrice = 0;
+        for (int i : this.bookInCart) {
+            totalPrice += i * 100;
+        }
+        return totalPrice;
     }
 }
